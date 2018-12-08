@@ -1,1 +1,12 @@
-{"version":1,"add":[{"type":"mod","name":"jei_1.12.2-4.13.1.225.jar","url":"https://media.forgecdn.net/files/2640/458/jei_1.12.2-4.13.1.225.jar"}],"remove":[{"type":"mod","name":"jei_1.12.2-4.13.1.224.jar"}]}
+{
+	"version": 1,
+	"add": [{
+		"save": ".\\.minecraft\\mods\\",
+		"name": "jei_1.12.2-4.13.1.225.jar",
+		"url": "https://media.forgecdn.net/files/2640/458/jei_1.12.2-4.13.1.225.jar"
+	}],
+	"remove": [{
+		"save": ".\\.minecraft\\mods\\",
+		"name": "jei_1.12.2-4.13.1.224.jar"
+	}]
+}
