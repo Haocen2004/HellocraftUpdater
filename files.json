@@ -1,6 +1,6 @@
 {
 	"add": [{
-		"save": ".\\.minecraft\\libraries\\optifine\\OptiFine\\1.13.2_HD_U_E5\\OptiFine-1.13.2_HD_U_E5.jar",
+		"save": ".\\.minecraft\\libraries\\optifine\\OptiFine\\1.13.2_HD_U_E5\\",
 		"name": "OptiFine-1.13.2_HD_U_E5.jar",
 		"url": "https://bmclapi2.bangbang93.com/optifine/1.13.2/HD_U/E5"
 	}, {
@@ -8,19 +8,17 @@
 		"name": "Launcher.exe",
 		"url": "https://raw.githubusercontent.com/Haocen2004/HellocraftUpdater/master/Launcher.exe"
 	}, {
-		"save": ".\\.minecraft\\versions\\1.13.2-OptiFine_HD_U_E5\\1.13.2-OptiFine_HD_U_E5.jar",
+		"save": ".\\.minecraft\\versions\\1.13.2-OptiFine_HD_U_E5\\",
 		"name": "1.13.2-OptiFine_HD_U_E5.jar",
 		"url": "https://bmclapi2.bangbang93.com/version/1.13.2/client"
 	}, {
-		"save": ".\\.minecraft\\versions\\1.13.2-OptiFine_HD_U_E5\\1.13.2-OptiFine_HD_U_E5.json",
+		"save": ".\\.minecraft\\versions\\1.13.2-OptiFine_HD_U_E5\\",
 		"name": "1.13.2-OptiFine_HD_U_E5.json",
 		"url": "https://raw.githubusercontent.com/Haocen2004/HellocraftUpdater/master/1.13.2-OptiFine_HD_U_E5.json"
 	}],
 	"version": 1,
-	"remove": [{
-		"save": ".\\.minecraft\\launcher_profiles.json",
-		"name": "launcher_profiles.json"
-	}, {
+	"remove": [
+	{
 		"save": ".\\.minecraft\\libraries\\eu\\the5zig\\Mods\\1.13_3.12.6_b2\\Mods-1.13_3.12.6_b2.jar",
 		"name": "Mods-1.13_3.12.6_b2.jar"
 	}, {
