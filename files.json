@@ -1,5 +1,6 @@
 {
 	"version": 1,
 	"add": [],
-	"remove": []
+	"remove": []，
+	"launcher": "HMCL-3.2.SNAPSHOT.exe"		
 }
