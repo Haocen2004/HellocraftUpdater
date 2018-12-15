@@ -5,8 +5,8 @@
 		"url": "https://bmclapi2.bangbang93.com/optifine/1.13.2/HD_U/E5"
 	}, {
 		"save": ".\\",
-		"name": "Launcher.exe",
-		"url": "https://raw.githubusercontent.com/Haocen2004/HellocraftUpdater/master/Launcher.exe"
+		"name": "McRun.exe",
+		"url": "https://raw.githubusercontent.com/Haocen2004/HellocraftUpdater/master/McRun.exe"
 	}, {
 		"save": ".\\.minecraft\\versions\\1.13.2-OptiFine_HD_U_E5\\",
 		"name": "1.13.2-OptiFine_HD_U_E5.jar",
