@@ -220,7 +220,7 @@ public class GUI_Client extends JFrame {
 	}
 
 	private void internationalize() {
-		setTitle(Main.strings.getString("title") + " - " + RefStrings.VERSION);
+		setTitle(Main.strings.getString("title") + " - " + RefStrings.VERSION + " - Hao_cenÄ§¸Ä°æ");
 		ipLabel.setText(Main.strings.getString("server_address"));
 		portLabel.setText(Main.strings.getString("server_port"));
 		B_sync.setText(Main.strings.getString("go_button"));

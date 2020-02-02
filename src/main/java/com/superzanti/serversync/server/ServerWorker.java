@@ -78,7 +78,7 @@ public class ServerWorker implements Runnable {
 				ServerTimeout task = new ServerTimeout(this);
 				timeout.schedule(task, 10000);
 				message = (String) ois.readObject();
-				Logger.log("从 " + clientsocket.getInetAddress()+" 收看信息");
+				Logger.log("从 " + clientsocket.getInetAddress()+" 收到信息");
 				task.cancel();
 				timeout.purge();
 			} catch (SocketException e) {

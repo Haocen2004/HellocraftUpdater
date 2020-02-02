@@ -127,7 +127,7 @@ public class ServerSetup implements Runnable {
         }
 
         // keep listening indefinitely until program terminates
-        Logger.log("<!>现在可以接收客户端连接...");
+        Logger.log("现在可以接收客户端连接...");
 
         while (true) {
             try {
@@ -138,15 +138,14 @@ public class ServerSetup implements Runnable {
                 Socket socket = server.accept();
                 ServerWorker sc = new ServerWorker(socket, server, generateServerMessages(), timeoutScheduler);
                 Thread clientThread = new Thread(sc, "Server client Handler");
-                clientThread.setName("ClientThread - " + socket.getInetAddress());
+                clientThread.setName("客户端链接 - " + socket.getInetAddress());
                 clientThread.start();
             } catch (IOException e) {
             	int tag_tag = 1;
                 while(tag_tag<20) {
-            	Logger.error("<1>接受客户端连接时出错，中断服务器侦听器。您需要重新启动服务器");
+            	Logger.error("<!>接受客户端连接时出错，中断服务器侦听器。您需要重新启动服务器");
             	tag_tag++;
                 }
-                System.exit(20200202);
             }
         }
     }

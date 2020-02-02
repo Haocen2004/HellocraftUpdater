@@ -48,7 +48,7 @@ public class Main {
 
 		// Only for testing, this cleans up old sync files
 		if (arguments.cleanup) {
-			System.out.println("cleaning up test files");
+			System.out.println("清理测试文件");
 			System.out.println(Paths.get("").toAbsolutePath().toString());
 			try {
 				Path modsDir = Paths.get("mods");
@@ -75,10 +75,10 @@ public class Main {
 
 	private static void commonInit() {
 		try {
-			System.out.println("加载语音文件e: " + CONFIG.LOCALE);
+			System.out.println("加载语言文件: " + CONFIG.LOCALE);
 			strings = ResourceBundle.getBundle("assets.serversync.lang.MessagesBundle", CONFIG.LOCALE);
 		} catch (MissingResourceException e) {
-			System.out.println("语音文件加载失败: " + CONFIG.LOCALE + ", 设置为默认语音（简体中文）");
+			System.out.println("语言文件加载失败: " + CONFIG.LOCALE + ", 设置为默认语音（简体中文）");
 			strings = ResourceBundle.getBundle("assets.serversync.lang.MessagesBundle", new Locale("zh", "CN"));
 		}
 	}

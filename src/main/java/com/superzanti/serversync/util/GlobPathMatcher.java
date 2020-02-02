@@ -29,7 +29,7 @@ public class GlobPathMatcher implements PathMatcher {
 			return false;
 		}
 		
-		PathMatcher globMatcher = FileSystems.getDefault().getPathMatcher("¸ùÄ¿Â¼:" + this.mPattern);
+		PathMatcher globMatcher = FileSystems.getDefault().getPathMatcher("glob:" + this.mPattern);
 		return globMatcher.matches(path);
 	}
 	
