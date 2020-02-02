@@ -1,2 +1,0 @@
-gamma:10.0
-lang:zh_cn
