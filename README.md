@@ -6,6 +6,8 @@ forked from superzanti/ServerSync
 * 本地化
 * 默认同步2次
 
+对我忘记直接点fork了 下次一定
+
 ServerSync
 =========
 This is an open source utility that allows for easy mod management. The client will always be able to connect to your server and you will never again have to send them the new files and tell them to update. This method avoids a lot of complaining. As a server admin constantly changing configs/updating mods it can get to be quite a pain pushing these updates. Some users have trouble finding the minecraft folder let alone putting mods in the right place.
