@@ -72,6 +72,7 @@ public class SyncConfig {
 	
 	public SyncConfig(EConfigType type) {
 		this.FILE_IGNORE_LIST.add("serversync-*.jar");
+		this.FILE_IGNORE_LIST.add("Pluscraft*.jar");
 		this.FILE_IGNORE_LIST.add("OptiFine*.jar");
 		configType = type;
 		config = new MinecraftConfig();
@@ -229,6 +230,7 @@ public class SyncConfig {
 				FILE_IGNORE_LIST.addAll(config.getEntryByName("FILE_IGNORE_LIST").getList());
 				FILE_IGNORE_LIST.add("serversync*");
 				FILE_IGNORE_LIST.add("OptiFine*");
+				FILE_IGNORE_LIST.add("Pluscraft*");
 			} catch (NullPointerException e) {
 				// Specific conversion from old config files
 				FILE_IGNORE_LIST.addAll(config.getEntryByName("MOD_IGNORE_LIST").getList());
