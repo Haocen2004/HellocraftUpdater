@@ -29,6 +29,7 @@ final class ConfigDefaults extends HashMap<EConfigDefaults, String> {
 		this.put(EConfigDefaults.LAST_UPDATE, "");
 		this.put(EConfigDefaults.PUSH_CLIENT_MODS, "false");
 		this.put(EConfigDefaults.REFUSE_CLIENT_MODS, "false");
+		this.put(EConfigDefaults.LOG, "false");
 	}
 }
 
@@ -59,6 +60,7 @@ public class SyncConfig {
 	////////////////////////////////////////
 	
 	// SERVER //////////////////////////////
+	public Boolean LOG;
 	public int SERVER_PORT;
 	public Boolean PUSH_CLIENT_MODS;
 	public List<String> DIRECTORY_INCLUDE_LIST;
@@ -123,6 +125,7 @@ public class SyncConfig {
 				ArrayList<String> comments = new ArrayList<String>();
 				ArrayList<String> defaultValueList = new ArrayList<>();
 				
+				
 				MinecraftConfigCategory general = new MinecraftConfigCategory(SyncConfig.CATEGORY_GENERAL);
 					comments.add("# 设置为true来推送客户端mod Eg.Optifine 请将模组放在  clientmods 文件夹，仅需服务器设置  [default: false]");
 					general.add(new MinecraftConfigElement(SyncConfig.CATEGORY_GENERAL, "B", "PUSH_CLIENT_MODS", "false", comments));
@@ -152,7 +155,11 @@ public class SyncConfig {
 					comments.add("# 语言 默认简体中文");
 					other.add(new MinecraftConfigElement(SyncConfig.CATEGORY_OTHER, "S", "LOCALE", Locale.SIMPLIFIED_CHINESE.toString(), comments));
 					comments.clear();
-				
+					
+					comments.add("# 后台输出日志");
+					other.add(new MinecraftConfigElement(SyncConfig.CATEGORY_OTHER, "B", "LOG", "false", comments));
+					comments.clear();
+					
 				config.put(SyncConfig.CATEGORY_GENERAL, general);
 				config.put(SyncConfig.CATEGORY_RULES, rules);
 				config.put(SyncConfig.CATEGORY_CONNECTION, serverConnection);
@@ -225,12 +232,10 @@ public class SyncConfig {
 	private void init() {
 		try {			
 			LOCALE = new Locale(config.getEntryByName("LOCALE").getString());
-			
+				
 			try {				
 				FILE_IGNORE_LIST.addAll(config.getEntryByName("FILE_IGNORE_LIST").getList());
 				FILE_IGNORE_LIST.add("serversync*");
-				FILE_IGNORE_LIST.add("OptiFine*");
-				FILE_IGNORE_LIST.add("Pluscraft*");
 			} catch (NullPointerException e) {
 				// Specific conversion from old config files
 				FILE_IGNORE_LIST.addAll(config.getEntryByName("MOD_IGNORE_LIST").getList());
@@ -239,6 +244,7 @@ public class SyncConfig {
 			CONFIG_INCLUDE_LIST = config.getEntryByName("CONFIG_INCLUDE_LIST").getList();
 			
 			if (configType == EConfigType.SERVER) {				
+				LOG = config.getEntryByName("LOG").getBoolean();
 				PUSH_CLIENT_MODS = config.getEntryByName("PUSH_CLIENT_MODS").getBoolean();
 				DIRECTORY_INCLUDE_LIST = config.getEntryByName("DIRECTORY_INCLUDE_LIST").getList();
 				SERVER_PORT = config.getEntryByName("SERVER_PORT").getInt();

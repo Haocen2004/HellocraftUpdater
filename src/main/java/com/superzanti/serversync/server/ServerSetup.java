@@ -1,11 +1,12 @@
 package com.superzanti.serversync.server;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import com.superzanti.serversync.filemanager.FileManager;
 import com.superzanti.serversync.util.Logger;
 import com.superzanti.serversync.util.SyncFile;
 import com.superzanti.serversync.util.enums.EFileMatchingMode;
 import com.superzanti.serversync.util.enums.EServerMessage;
-import org.apache.commons.codec.digest.DigestUtils;
+
 import runme.Main;
 
 import java.io.IOException;
@@ -54,6 +55,7 @@ public class ServerSetup implements Runnable {
     }
 
     public ServerSetup() {
+		Logger.setSystemOutput(Main.CONFIG.LOG);
         DateFormat dateFormatter = DateFormat.getDateInstance();
         FileManager fileManager = new FileManager();
 

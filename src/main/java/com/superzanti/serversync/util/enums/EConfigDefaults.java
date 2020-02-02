@@ -5,5 +5,6 @@ public enum EConfigDefaults {
 	SERVER_PORT,
 	PUSH_CLIENT_MODS,
 	REFUSE_CLIENT_MODS,
-	LAST_UPDATE
+	LAST_UPDATE,
+	LOG
 }

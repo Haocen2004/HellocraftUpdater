@@ -216,105 +216,99 @@ public class ClientWorker implements Runnable {
         }
     }
     
-    void run2() {
-    	
-        updateHappened = false;
-
-        Main.clientGUI.disableSyncButton();
-        Logger.getLog().clearUserFacingLog();
-
-        server = new Server(this, Main.CONFIG.SERVER_IP, Main.CONFIG.SERVER_PORT);
-
-        if (!server.connect()) {
-            errorInUpdates = true;
-            this.closeWorker();
-            return;
-        }
-
-        ArrayList<String> syncableDirectories = server.getSyncableDirectories();
-        if (syncableDirectories == null) {
-            errorInUpdates = true;
-            closeWorker();
-            return;
-        }
-
-        if (syncableDirectories.isEmpty()) {
-            Logger.log(Main.strings.getString("no_syncable_directories"));
-            finished = true;
-            closeWorker();
-            return;
-        }
-
-        List<SyncFile> clientFiles = getClientFiles(syncableDirectories);
-
-        Logger.debug("检查服务器更新状态...");
-        Logger.debug(clientFiles.toString());
-        boolean updateNeeded = server.isUpdateNeeded(clientFiles);
-        updateNeeded = true; // TODO TEMP
-
-        /* MAIN PROCESSING CHUNK */
-        if (updateNeeded) {
-            updateHappened = true;
-            Logger.log(Main.strings.getString("mods_incompatable"));
-            Logger.log("<------> " + Main.strings.getString("get_file") + " <------>");
-
-            Logger.log(Main.strings.getString("mods_get"));
-            ArrayList<SyncFile> serverFiles = server.getFiles();
-
-            if (serverFiles == null) {
-                Logger.log(Main.strings.getString("sync_fail"));
-                errorInUpdates = true;
-                closeWorker();
-                return;
-            }
-
-            if (serverFiles.isEmpty()) {
-                Logger.log(Main.strings.getString("no_sync"));
-                finished = true;
-                closeWorker();
-                return;
-            }
-
-            /* CLIENT SPECIFIC MODS */
-            // These are files that do not need to be present on the server to connect and
-            // play
-            // These are only added if the user wanting to connect to the server has
-            // ServerSync configured to accept them
-            if (!Main.CONFIG.REFUSE_CLIENT_MODS) {
-                Logger.log(Main.strings.getString("mods_accepting_clientmods"));
-
-                ArrayList<SyncFile> serverClientOnlyMods = server.getClientOnlyFiles();
-
-                if (serverClientOnlyMods == null) {
-                    // TODO add to TDB
-                    Logger.log("接受客户端模组失败");
-                    errorInUpdates = true;
-                } else {
-                    serverFiles.addAll(serverClientOnlyMods);
-                }
-            } else {
-                Logger.log(Main.strings.getString("mods_refusing_clientmods"));
-            }
-
-            updateFiles(clientFiles, serverFiles);
-
-            deleteFiles(clientFiles, serverFiles);
-
-            // Get a new list of client files as we will have modified them during the
-            // previous phases
-            duplicateCheck(getClientFiles(syncableDirectories));
-
-        }
-
-        closeWorker();
-    	
-    }
-
     @Override
     public void run() {
-    	run2();
-    	run2();
-        Logger.log(Main.strings.getString("update_complete"));
+    	 updateHappened = false;
+
+         Main.clientGUI.disableSyncButton();
+         Logger.getLog().clearUserFacingLog();
+
+         server = new Server(this, Main.CONFIG.SERVER_IP, Main.CONFIG.SERVER_PORT);
+
+         if (!server.connect()) {
+             errorInUpdates = true;
+             this.closeWorker();
+             return;
+         }
+
+         ArrayList<String> syncableDirectories = server.getSyncableDirectories();
+         if (syncableDirectories == null) {
+             errorInUpdates = true;
+             closeWorker();
+             return;
+         }
+
+         if (syncableDirectories.isEmpty()) {
+             Logger.log(Main.strings.getString("no_syncable_directories"));
+             finished = true;
+             closeWorker();
+             return;
+         }
+
+         List<SyncFile> clientFiles = getClientFiles(syncableDirectories);
+
+         Logger.debug("检查服务器更新状态...");
+         Logger.debug(clientFiles.toString());
+         boolean updateNeeded = server.isUpdateNeeded(clientFiles);
+         updateNeeded = true; // TODO TEMP
+
+         /* MAIN PROCESSING CHUNK */
+         if (updateNeeded) {
+             updateHappened = true;
+             Logger.log(Main.strings.getString("mods_incompatable"));
+             Logger.log("<------> " + Main.strings.getString("get_file") + " <------>");
+
+             Logger.log(Main.strings.getString("mods_get"));
+             ArrayList<SyncFile> serverFiles = server.getFiles();
+
+             if (serverFiles == null) {
+                 Logger.log(Main.strings.getString("sync_fail"));
+                 errorInUpdates = true;
+                 closeWorker();
+                 return;
+             }
+
+             if (serverFiles.isEmpty()) {
+                 Logger.log(Main.strings.getString("no_sync"));
+                 finished = true;
+                 closeWorker();
+                 return;
+             }
+
+             /* CLIENT SPECIFIC MODS */
+             // These are files that do not need to be present on the server to connect and
+             // play
+             // These are only added if the user wanting to connect to the server has
+             // ServerSync configured to accept them
+             if (!Main.CONFIG.REFUSE_CLIENT_MODS) {
+                 Logger.log(Main.strings.getString("mods_accepting_clientmods"));
+
+                 ArrayList<SyncFile> serverClientOnlyMods = server.getClientOnlyFiles();
+
+                 if (serverClientOnlyMods == null) {
+                     // TODO add to TDB
+                     Logger.log("接受客户端模组失败");
+                     errorInUpdates = true;
+                 } else {
+                     serverFiles.addAll(serverClientOnlyMods);
+                 }
+             } else {
+                 Logger.log(Main.strings.getString("mods_refusing_clientmods"));
+             }
+
+             updateFiles(clientFiles, serverFiles);
+
+             deleteFiles(clientFiles, serverFiles);
+
+             // Get a new list of client files as we will have modified them during the
+             // previous phases
+             duplicateCheck(getClientFiles(syncableDirectories));
+
+         }
+
+         closeWorker();
+ 		 Logger.log(Main.strings.getString("update_complete"));
+     	
     }
 
 }

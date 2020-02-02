@@ -138,7 +138,7 @@ public class SyncFile implements Serializable {
 			MinecraftModInformation.fromFile(this.getFileAsPath());
 		} else {
 			System.out.println("文件: " + this.synchronizableFile.getName()
-					+ " 不是一个 Minecraft Mod (这不是报错)");
+					+ " 同步中");
 		}
 	}
 
