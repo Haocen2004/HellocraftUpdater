@@ -34,7 +34,7 @@ public class Log extends Observable {
 			this.userFacingLog.append("\r\n");
 		}
 		if (shouldOutputToSystem) {
-			Logger.log(message);
+			System.out.println(tag+message);
 		}
 		this.logContent.append(message);
 		this.logContent.append("\r\n");
