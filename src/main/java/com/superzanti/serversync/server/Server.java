@@ -61,7 +61,7 @@ public class Server {
 
 		Logger.log("< " + Main.strings.getString("connection_message") + " >");
 		try {
-			clientSocket.connect(new InetSocketAddress(host.getHostName(), PORT), 5000);
+			clientSocket.connect(new InetSocketAddress(host.getHostName(), PORT), 50000);
 		} catch (IOException e) {
 			Logger.error(Main.strings.getString("connection_failed_server") + ": " + IP_ADDRESS + ":" + PORT);
 			AutoClose.closeResource(clientSocket);

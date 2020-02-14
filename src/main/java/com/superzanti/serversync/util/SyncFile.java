@@ -91,9 +91,9 @@ public class SyncFile implements Serializable {
 		this.isClientSideOnlyFile = isClientSideOnly;
 		this.fileHash = FileHash.hashString(this.synchronizableFile);
 
-		if (!isConfig) {
-			this.populateModInformation();
-		}
+//		if (!isConfig) {
+//			this.populateModInformation();
+//		}
 	}
 
 	public boolean matchesIgnoreListPattern() {
@@ -135,7 +135,7 @@ public class SyncFile implements Serializable {
 
 	private void populateModInformation() {
 		if (Files.exists(this.getFileAsPath()) && this.isZipJar(this.synchronizableFile.getName())) {
-			MinecraftModInformation.fromFile(this.getFileAsPath());
+			//MinecraftModInformation.fromFile(this.getFileAsPath());
 		} else {
 			System.out.println("文件: " + this.synchronizableFile.getName()
 					+ " 同步中");

@@ -81,26 +81,26 @@ public class MinecraftModInformation implements Serializable {
 						}
 
 						// At the moment we only care about these two entries in the information file
-						if (desiredFields.stream().allMatch(info::has)) {
-							modInformation = new MinecraftModInformation(info.get("version").getAsString(),
-									info.get("name").getAsString());
-							break;
-						}
+//						if (desiredFields.stream().allMatch(info::has)) {
+//							modInformation = new MinecraftModInformation(info.get("version").getAsString(),
+//									info.get("name").getAsString());
+//							break;
+//						}
 					}
 				}
 			}
 
 			AutoClose.closeResource(read, is, packagedMod);
 
-			if (modInformation == null) {
-				Logger.debug(
-					String.format("%s - 在mod信息文件中找不到所需的字段: %s",
-						path.getFileName().toString(),
-						String.join(",", desiredFields)
-					)
-				);
-				return new MinecraftModInformation("", "");
-			}
+//			if (modInformation == null) {
+//				Logger.debug(
+//					String.format("%s - 在mod信息文件中找不到所需的字段: %s",
+//						path.getFileName().toString(),
+//						String.join(",", desiredFields)
+//					)
+//				);
+//				return new MinecraftModInformation("", "");
+//			}
 			return modInformation;
 		} else {
 			Logger.log(

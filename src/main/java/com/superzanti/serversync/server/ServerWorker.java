@@ -96,6 +96,7 @@ public class ServerWorker implements Runnable {
 			try {
 				if (message.equals(Main.HANDSHAKE)) {
 					Logger.log("发送连接信息");
+					Logger.debug(messages.toString());
 					oos.writeObject(messages);
 					oos.flush();
 					continue;
@@ -111,12 +112,13 @@ public class ServerWorker implements Runnable {
 						e.printStackTrace();
 					}
 					timeout = new Timer();
-					timeout.schedule(new ServerTimeout(this), 5000);
+					timeout.schedule(new ServerTimeout(this), 50000);
 					continue;
 				}
 
 				if (message.equals(messages.get(EServerMessage.INFO_LAST_UPDATE))) {
 					Logger.log("发送最后更新时间戳");
+					Logger.debug(Main.CONFIG.LAST_UPDATE);
 					oos.writeObject(Main.CONFIG.LAST_UPDATE);
 					oos.flush();
 					continue;

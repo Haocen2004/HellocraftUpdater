@@ -295,18 +295,17 @@ public class ClientWorker implements Runnable {
              } else {
                  Logger.log(Main.strings.getString("mods_refusing_clientmods"));
              }
-
              updateFiles(clientFiles, serverFiles);
-
+             closeWorker();
              deleteFiles(clientFiles, serverFiles);
-
              // Get a new list of client files as we will have modified them during the
              // previous phases
+             Logger.log("<--- 检查重复文件 --->");
              duplicateCheck(getClientFiles(syncableDirectories));
-
+             Main.clientGUI.updateText("同步完成");
+             Main.clientGUI.enableSyncButton();
          }
 
-         closeWorker();
  		 Logger.log(Main.strings.getString("update_complete"));
      	
     }

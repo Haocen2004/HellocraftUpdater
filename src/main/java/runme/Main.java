@@ -8,7 +8,6 @@ import java.nio.file.Paths;
 import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.Locale;
-import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
 import com.superzanti.serversync.SyncConfig;
@@ -38,6 +37,9 @@ public class Main {
 	public static ProgramArguments arguments;
 
 	public static void main(String[] args) {
+		
+		
+		
 		arguments = new ProgramArguments(args);
 
 		if (arguments.isServer) {
@@ -76,10 +78,12 @@ public class Main {
 	private static void commonInit() {
 		try {
 			System.out.println("加载语言文件: " + CONFIG.LOCALE);
+			//strings = ResourceBundle.getBundle("D:\\tools\\java-photon\\serversync-plusver\\HellocraftUpdater\\src\\resources\\assets\\serversync\\lang\\MessagesBundle_zh_CN.properties");
 			strings = ResourceBundle.getBundle("assets.serversync.lang.MessagesBundle", CONFIG.LOCALE);
-		} catch (MissingResourceException e) {
+		} catch (Exception e) {
 			System.out.println("语言文件加载失败: " + CONFIG.LOCALE + ", 设置为默认语音（简体中文）");
 			strings = ResourceBundle.getBundle("assets.serversync.lang.MessagesBundle", new Locale("zh", "CN"));
+			//strings = ResourceBundle.getBundle("D:\\tools\\java-photon\\serversync-plusver\\HellocraftUpdater\\src\\resources\\assets\\serversync\\lang\\MessagesBundle_zh_CN.properties");
 		}
 	}
 
@@ -117,9 +121,9 @@ public class Main {
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-				System.exit(1);
+				//System.exit(1);
 			}
-			System.exit(0);
+			//System.exit(0);
 		} else {
 			clientGUI = new GUI_Client();
 			clientGUI.setIPAddress(CONFIG.SERVER_IP);

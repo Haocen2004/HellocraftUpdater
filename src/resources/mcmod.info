@@ -1,13 +1,13 @@
 [
 {
-  "modid": "pluscraftsync",
-  "name": "Pluscraft Server Sync mod",
+  "modid": "serversync",
+  "name": "Server Sync",
   "description": "Sync files between client and server for Minecraft Forge",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "",
   "updateUrl": "",
-  "authorList": ["SuperZanti","Hao_cen"],
+  "authorList": ["SuperZanti"],
   "credits": "",
   "logoFile": "",
   "screenshots": [],

@@ -76,6 +76,7 @@ public class SyncConfig {
 		this.FILE_IGNORE_LIST.add("serversync-*.jar");
 		this.FILE_IGNORE_LIST.add("Pluscraft*.jar");
 		this.FILE_IGNORE_LIST.add("OptiFine*.jar");
+		this.FILE_IGNORE_LIST.add("memory_repo");
 		configType = type;
 		config = new MinecraftConfig();
 		if (configType == EConfigType.SERVER) {			
